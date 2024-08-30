@@ -6,6 +6,7 @@ vim.cmd("set shiftwidth=4")
 vim.opt.relativenumber = true
 vim.g.mapleader = ' ' 
 vim.opt.mouse = ""
+vim.keymap.set('t', '<leader>e', '<C-\\><C-n>', opts)
 
 -- Plugin Configs
 
@@ -21,7 +22,22 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 local config = require("nvim-treesitter.configs")
 config.setup({
-	 ensure_installed = { "python", "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html", "java", "cpp" },
+	 ensure_installed = { 
+                "python", 
+                "c", 
+                "lua", 
+                "vim", 
+                "vimdoc", 
+                "query", 
+                "elixir", 
+                "heex", 
+                "javascript", 
+                "html", 
+                "java", 
+                "cpp",
+                "rust"
+            },
+
 	 highlight = { enable = true},
 	 indent = { enable = true},
 })
@@ -41,6 +57,9 @@ lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
   lsp_zero.default_keymaps({buffer = bufnr})
+    if vim.lsp.inlay_hint then
+      vim.lsp.inlay_hint.enable(true, { 0 })
+    end
 end)
 
 lsp_zero.setup()
