@@ -1,12 +1,14 @@
 return {
 
 	{
-	    "sainnhe/edge",
-	    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-	    priority = 1000, -- make sure to load this before all the other start plugins
-	    config = function()
-	      -- load the colorscheme here
-	      vim.cmd([[colorscheme edge]])
-	    end,
+      'sainnhe/edge',
+      lazy = false,
+      priority = 1000,
+      config = function()
+        -- Optionally configure and load the colorscheme
+        -- directly inside the plugin declaration.
+        vim.g.edge_transparent_background = 1
+        vim.cmd.colorscheme('edge')
+      end,
 	},
 }
