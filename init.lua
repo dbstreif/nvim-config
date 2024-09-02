@@ -6,7 +6,7 @@ vim.cmd("set shiftwidth=4")
 vim.opt.relativenumber = true
 vim.g.mapleader = ' ' 
 vim.opt.mouse = ""
-vim.keymap.set('t', '<leader>e', '<C-\\><C-n>', opts)
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts)
 
 -- Plugin Configs
 
