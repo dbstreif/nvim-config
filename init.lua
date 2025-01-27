@@ -64,6 +64,22 @@ lsp_zero.on_attach(function(client, bufnr)
     end
 end)
 
+lsp_zero.configure('clangd', {
+    filetypes = {
+        "c",
+        "cpp",
+        "objc",
+        "objcpp",
+        "cuda"
+    },
+})
+
+lsp_zero.configure('gopls', {
+    filetypes = {
+        "go"
+    },
+})
+
 lsp_zero.setup()
 
 local cmp = require('cmp')
@@ -94,4 +110,3 @@ require('mason-lspconfig').setup({
     end,
   },
 })
-
