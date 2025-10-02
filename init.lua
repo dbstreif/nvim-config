@@ -45,43 +45,6 @@ config.setup({
 })
 
 
-
-local lsp_zero = require('lsp-zero')
-
-lsp_zero.preset({
-  name = 'minimal',
-  set_lsp_keymaps = true,
-  manage_nvim_cmp = true,
-  suggest_lsp_servers = false
-})
-
-lsp_zero.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp_zero.default_keymaps({buffer = bufnr})
-    if vim.lsp.inlay_hint then
-      vim.lsp.inlay_hint.enable(true, { 0 })
-    end
-end)
-
-lsp_zero.configure('clangd', {
-    filetypes = {
-        "c",
-        "cpp",
-        "objc",
-        "objcpp",
-        "cuda"
-    },
-})
-
-lsp_zero.configure('gopls', {
-    filetypes = {
-        "go"
-    },
-})
-
-lsp_zero.setup()
-
 local cmp = require('cmp')
 local select_opts = {behavior = cmp.SelectBehavior.Select}
 
@@ -106,7 +69,7 @@ require('mason-lspconfig').setup({
     ensure_installed = {"clangd", "jedi_language_server", "clangd", "jdtls"}, 
     handlers = {
     function(server_name)
-      require('lspconfig')[server_name].setup({})
+      vim.lsp.config(server_name).setup({})
     end,
   },
 })
