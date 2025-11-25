@@ -8,3 +8,4 @@ vim.opt.spell = false
 vim.g.mapleader = ' ' 
 vim.opt.mouse = ""
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts)
+vim.opt.clipboard = "unnamedplus"
