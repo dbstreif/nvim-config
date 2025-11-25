@@ -1,13 +1,18 @@
 return {
-{
-    'altermo/ultimate-autopair.nvim',
-    event={'InsertEnter','CmdlineEnter'},
-    branch='v0.6', --recommended as each new version will have breaking changes
-    opts={
-        --Config goes here
-        extensions={cond={cond=function(fn) return not fn.in_macro() end}}
-    },
-},
+  "windwp/nvim-autopairs",
+  event = "InsertEnter",
+  config = function()
+    local npairs = require("nvim-autopairs")
+    npairs.setup({
+      check_ts = true,
+      fast_wrap = {},
+    })
 
-
+    -- CMP integration
+    local cmp_ok, cmp = pcall(require, "cmp")
+    if cmp_ok then
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    end
+  end
 }
