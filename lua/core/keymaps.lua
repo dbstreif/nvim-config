@@ -1,6 +1,6 @@
--- Telescope keymaps --
 local map = vim.keymap.set
 
+-- Telescope keymaps --
 map("n", "<leader>ff", function()
   require("telescope.builtin").find_files()
 end)
@@ -50,6 +50,5 @@ end, { desc = "Diagnostics: Next diagnostic" })
 map("n", "[d", function()
   require("vim.diagnostic").goto_prev()
 end, { desc = "Diagnostics: Previous diagnostic" })
-
 
 -- yanky keymaps can be found in nvim/lua/plugins/yanky.lua

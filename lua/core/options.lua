@@ -5,7 +5,8 @@ vim.cmd("set shiftwidth=4")
 vim.opt.relativenumber = true
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = false
-vim.g.mapleader = ' ' 
+vim.g.mapleader = ' '
 vim.opt.mouse = ""
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts)
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 vim.opt.clipboard = "unnamedplus"
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
