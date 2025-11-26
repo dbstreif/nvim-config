@@ -2,8 +2,6 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     dependencies = {
         { "mason-org/mason.nvim", opts = {} },
-        "neovim/nvim-lspconfig",
-        "hrsh7th/cmp-nvim-lsp"
     },
 
     config = function()
@@ -21,9 +19,10 @@ return {
         local lsps = require("core.lsps")
 
         -- Collect unique tool names (automatically install lsps from core.lsps)
-        for _, list in pairs(lsps) do
-          for _, tool in ipairs(list) do
-            tools[tool] = true
+        for _, servers in pairs(lsps) do
+          for _, server in ipairs(servers) do
+            local name = server[1]
+            tools[name] = true
           end
         end
 
