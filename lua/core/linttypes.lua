@@ -1,7 +1,7 @@
 return {
     cmake = { "cmakelang" },
     make = { "checkmake" },
-    python = { "pylint" },
+    python = { "ruff" },
     cpp = { "cpplint" },
     lua = { "luacheck" },
     javascript = { "eslint_d" },
